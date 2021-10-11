@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<!--special thanks to John Rioux for help with the javascript! https://www.johnrioux.com/-->
+
+<style>
+p {
+    
+    }
+</style>
+<body>
+
+<h2>Anagram HTML Formatter</h2>
+
+<p>Top: <input type="text" id="top"> <--- Link, if applicable: <input type="text" id="link"></p>
+<p>Letters: <textarea type="text" id="letters" rows="10" cols="10"></textarea></p>
+<p>Bottom: <textarea type="text" id="bottom" rows="3" cols="20"></textarea></p>
+<p>Hovertext: <input type="text" id="hover"></p>
+
+<button onclick="Format()">Go!</button>
+
+<div id="output" style="padding-top:1rem; font-family:courier">
+<div id="topOutput"></div>
+<div id="lettersOutput"></div>
+<div id="bottomOutput"></div>
+<div id="hoverOutput"></div>
+</div>
+
+
+<h3>Preview:</h3>
+<div id="preview"></div>
+
+<script>
+function Format() {
+  var w = document.getElementById("top").value;
+  var x = document.getElementById("letters").value;
+  var y = document.getElementById("bottom").value;
+  var z = document.getElementById("hover").value;
+  var v = document.getElementById("link").value;
+
+  if (v !== "") {
+    document.getElementById("topOutput").innerHTML = "&lt;div title=&quot;" + z + "&quot;&gt; <br> &lt;p class=&quot;main&quot;&gt;" + "&lt;a href=&quot;" + v + "&quot;&gt;" + w + "&lt;&sol;a&gt;" + "&lt;&sol;p&gt;";
+  }   	
+  else {
+    document.getElementById("topOutput").innerHTML = "&lt;div title=&quot;" + z + "&quot;&gt; <br> &lt;p class=&quot;main&quot;&gt;" + w + "&lt;&sol;p&gt;";
+  } 
+  
+  document.getElementById("lettersOutput").innerHTML = "&lt;p&nbsp;class=&quot;letters&quot;&gt;" + x + "&lt;/p&gt;";
+  document.getElementById("bottomOutput").innerHTML = "&lt;p class=&quot;main&quot;&gt;" + y + "&lt;&sol;p&gt; <br> &lt;/div&gt;";
+  
+  document.getElementById("lettersOutput").innerHTML = document.getElementById("lettersOutput").innerHTML.replace(/\n/g, '&lt;br&gt;');
+  document.getElementById("bottomOutput").innerHTML = document.getElementById("bottomOutput").innerHTML.replace(/\n/g, '&lt;br&gt;');
+  
+  
+  
+  document.getElementById("preview").innerHTML = document.getElementById("output").textContent;
+}
+
+</script>
+
+</body>
+</html>
+
+
+
